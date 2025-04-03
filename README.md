@@ -1,36 +1,23 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# NextJS. MVVM-style architecture
 
-## Getting Started
+### Model-View-ViewModel (MVVM)
+Docs [MVVM](https://learn.microsoft.com/en-us/dotnet/architecture/maui/mvvm) from microsoft.
 
-First, run the development server:
+The MVVM pattern helps cleanly separate an application's business and presentation logic from its user interface (UI). Maintaining a clean separation between application logic and the UI helps address numerous development issues and makes an application easier to test, maintain, and evolve. It can also significantly improve code re-use opportunities and allows developers and UI designers to collaborate more easily when developing their respective parts of an app.
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+## Project Screenshot
+![App Screenshot](public/ss.png)
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## Code Screenshot Before After
+![Before After Screenshot](public/ss-before-after.png)
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+From the screenshot above, 
+we move all our logic and function (onSave, onDelete, State Data) from the .JSX file
+moved to src/viewmodels/useToDoModelView.ts file.
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+## Final Code Screenshot
+we have separated the logic and the IU,
+so we have a cleaner code for the UI.
 
-## Learn More
+![Final Code Screenshot](public/ss-final-code.png)
 
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
