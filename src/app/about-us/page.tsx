@@ -1,3 +1,10 @@
+import {Metadata} from "next";
+
+export const metadata: Metadata = {
+    title: 'About Us - NextJS. MVVM',
+    description: 'About Us',
+}
+
 export default function AboutUs() {
     return (
         <section>
