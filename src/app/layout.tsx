@@ -28,8 +28,9 @@ export default function RootLayout({
             <body
                 className={`${geistSans.variable} ${geistMono.variable} antialiased`}
             >
-                <nav className="m-6 navbar navbar-expand-lg navbar-dark bg-dark space-x-3 text-center text-slate-500    ">
+                <nav className="m-6 navbar navbar-expand-lg navbar-dark bg-dark space-x-5 text-center text-slate-500    ">
                     <Link href="/">Home</Link>
+                    <Link href="/about-us">About Us</Link>
                     <Link href="/my-to-do-list">Todo</Link>
                 </nav>
                 <main className="m-6 p-6 border border-slate-700">
