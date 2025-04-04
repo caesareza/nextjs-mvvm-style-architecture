@@ -7,7 +7,8 @@ import TheToDoList from '@/components/ToDo/TheToDoList'
 export default function ToDo() {
     const inputRef = useRef<HTMLInputElement>(null)
 
-    const { onSave } = useToDoModelView()
+    const { onSave, onSummary } = useToDoModelView()
+    const { isShowAlertTodo, alertMessage, total } = onSummary
 
     const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
         onSave(e)
@@ -16,8 +17,14 @@ export default function ToDo() {
 
     return (
         <>
-            <h1>List Your Todo</h1>
+            <h1>List Your To Do ({total})</h1>
+
             <TheToDoList />
+
+            {isShowAlertTodo && (
+                <div className="p-2 border rounded border-yellow-500 text-yellow-500 mb-5">{alertMessage}</div>
+            )}
+
             <form onSubmit={handleSubmit} className="flex">
                 <input
                     ref={inputRef}

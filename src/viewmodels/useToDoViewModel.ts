@@ -1,4 +1,4 @@
-import { FormEvent } from 'react'
+import {FormEvent, useMemo} from 'react'
 import { todoStore } from '@/stores/todoStore'
 
 interface ToDoProps {
@@ -10,10 +10,15 @@ interface IUseToDoViewModel {
     todo: ToDoProps[]
     onSave: (e: FormEvent<HTMLFormElement>) => void
     onDelete: (id: number) => void
+    onSummary: {
+        total: number,
+        isShowAlertTodo: boolean,
+        alertMessage: string
+    }
 }
 
 export const useToDoModelView = (): IUseToDoViewModel => {
-    const { addTodo } = todoStore()
+    const { setTodo } = todoStore()
     const todo = todoStore((state) => state.todo)
 
     const onSave = (e: FormEvent<HTMLFormElement>) => {
@@ -30,20 +35,26 @@ export const useToDoModelView = (): IUseToDoViewModel => {
             name,
         }
 
-        addTodo([...todo, data])
+        setTodo([ ...todo, data])
 
         e.currentTarget.reset()
     }
 
     const onDelete = (id: number) => {
-        console.log(id)
         const filter = todo.filter((t) => t.id !== id)
-        addTodo(filter)
+        setTodo(filter)
     }
+
+    const onSummary = useMemo(() => ({
+        total: todo.length,
+        isShowAlertTodo: todo.length <= 0,
+        alertMessage: "No to do"
+    }), [todo])
 
     return {
         todo,
         onSave,
         onDelete,
+        onSummary
     }
 }
