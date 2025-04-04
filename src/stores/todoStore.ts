@@ -8,14 +8,15 @@ type ToDoProps = {
 
 type ToDoState = {
     todo: ToDoProps[]
-    addTodo: (data: ToDoProps[]) => void
+    setTodo: (data: ToDoProps[]) => void
 }
 
 export const todoStore = create<ToDoState>()(
     persist(
         (set) => ({
             todo: [],
-            addTodo: (data) => set({ todo: data }),
+            setTodo: (data) =>
+                set(() => ({ todo: data })),
         }),
         {
             name: 'todo-storage',
